@@ -1,0 +1,23 @@
+Package: nchAnalysis
+Type: Package
+Title: What the Package Does (Title Case)
+Version: 0.1.0
+Author: Karam Daka
+Maintainer: The package maintainer <k.dacca@gmail.com>
+Description: More about what it does (maybe more than one line)
+    Use four spaces when indenting paragraphs within the Description.
+License: GPL-3
+Encoding: UTF-8
+LazyData: true
+Imports:
+  cluster 
+  ,pamr 
+  ,parallel 
+  ,siggenes
+  ,annotate
+  ,fgsea
+  ,org.Hs.eg.db
+  ,RColorBrewer
+  ,ConsensusClusterPlus
+Depends: R (>= 2.10.0)
+RoxygenNote: 6.0.1
