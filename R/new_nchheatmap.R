@@ -141,12 +141,27 @@ new_nchheatmap<-function(ordert_genes,col="RdBu",labRow = NULL,cexRoww = NULL, c
 
   }
 
+####### with sil mean , with sil width  without clinical data with genes with GSE
+
+  if( (print_genes) & (is.null(samples_data)) & (!is.null(sil_width))
+      &(plot_mean_sil) & (GSE)){
+    lmat<-do.call(rbind,lapply(1:(cluster_number+1), function(i){
+      return(c(0,i,0,0))
+    }))
+    lmat[2:(cluster_number+1),3]<-((cluster_number)+2): (((cluster_number)+1)+cluster_number)
+    lmat[2:(cluster_number+1),4]<-(((cluster_number)+2)+cluster_number): (((cluster_number)+1)+cluster_number*2)
+    lmat[1,3]<-(((cluster_number)+2)+cluster_number*2)
+    lwid <- c(0.5, 5,2,3)
+    lhei <- c(1,rep(1,times=cluster_number))
+
+  }
 
 
 
 
-  ######### layout without clinical data with genes
-  if( (print_genes) & (is.null(samples_data)) & (!is.null(sil_width)) & (plot_mean_sil)){
+  ######### layout without clinical data with genes without GSE without
+  if( (print_genes) & (is.null(samples_data)) & (!is.null(sil_width)) & (plot_mean_sil)
+      & (!GSE)){
     lmat<-do.call(rbind,lapply(1:(cluster_number+1), function(i){
       return(c(0,i,0))
     }))
@@ -159,7 +174,7 @@ new_nchheatmap<-function(ordert_genes,col="RdBu",labRow = NULL,cexRoww = NULL, c
 
 
 
-  grDevices::pdf(file="try.pdf",width=10,height=10)
+  ##grDevices::pdf(file="try.pdf",width=10,height=10)
   graphics::layout(lmat, widths = lwid, heights = lhei, respect = TRUE)
 
   ################# #Add Silhouette####################
@@ -313,5 +328,5 @@ new_nchheatmap<-function(ordert_genes,col="RdBu",labRow = NULL,cexRoww = NULL, c
     graphics::title(ylab = "Mean Sil.Width", line = 2,cex.lab=0.6)
 
   }
-  grDevices::dev.off()
+  ##grDevices::dev.off()
 }
