@@ -70,14 +70,14 @@
 Supervised_Cluster_Heatmap=function(groups_men, gene_matrix, method="PAMR",TOP=1000,
                                      show_sil=F,show_clin=F,genes_to_print=5,
                                      print_genes=FALSE,samples_data=NULL,colors="RdBu",
-                                     GSE=F,topPaths=5,db="c1",plot_mean_sil=F,sil_mean =NULL,threshold=2){
+                                     GSE=F,topPaths=5,db="c2",plot_mean_sil=F,sil_mean =NULL,threshold=2){
   cluster_files=supVisGenes(groups_men,gene_matrix=gene_matrix,method=method,TOP = TOP,threshold = threshold)
   ordert_genes<-cluster_files[[1]]
   genes_print_list<-cluster_files[[2]]
+  sil_w <-if(show_sil){as.data.frame(groups_men[,c("cluster","sil_width"),drop=F])}else{NULL}
 
-
-  new_nchheatmap(ordert_genes, sil_width = as.data.frame(groups_men[,c("cluster","sil_width"),drop=F])
+  new_nchheatmap(ordert_genes, sil_width =sil_w
                  ,samples_data = samples_data,print_genes = print_genes,list_of_genes = genes_print_list
                  ,plot_mean_sil=plot_mean_sil,sil_mean =sil_mean,
-                 genes_to_print=genes_to_print,col=colors,GSE=GSE)
+                 genes_to_print=genes_to_print,col=colors,GSE=GSE,db=db)
 }
