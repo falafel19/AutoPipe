@@ -20,7 +20,7 @@ new_nchheatmap<-function(ordert_genes,col="RdBu",labRow = NULL,cexRoww = NULL, c
   lhei <- c(1)
 
   ###### layout for heatmap + sill. width
-  if( (!print_genes) & (is.null(samples_data))  & (!plot_mean_sil)){
+  if( (!print_genes) & (is.null(samples_data))  & (!plot_mean_sil) & (!GSE)){
     lmat<-do.call(rbind,lapply(1:(cluster_number+1), function(i){
       return(c(0,i,0))
     }))
@@ -30,18 +30,18 @@ new_nchheatmap<-function(ordert_genes,col="RdBu",labRow = NULL,cexRoww = NULL, c
   }
 
   ###### layout for heatmap + sill. width + Mean sil
-  if( (!print_genes) & (is.null(samples_data))  & (plot_mean_sil)){
+  if( (!print_genes) & (is.null(samples_data))  & (plot_mean_sil) & (!GSE)){
     lmat<-do.call(rbind,lapply(1:(cluster_number+1), function(i){
       return(c(0,i,0))
     }))
     lmat[1,3]<-(cluster_number+2)
-    lwid <- c(0.5, 4,0.5)
+    lwid <- c(0.5, 4,2)
     lhei <- c(1,rep(1,times=cluster_number))
 
   }
 
   ###### layout for heatmap + sill. width + clinical data
-  if( (!print_genes) & (!is.null(samples_data))  & (!plot_mean_sil)){
+  if( (!print_genes) & (!is.null(samples_data))  & (!plot_mean_sil) & (!GSE)){
     lmat<-do.call(rbind,lapply(1:(cluster_number+1), function(i){
       return(c(0,i,0))
     }))
@@ -54,8 +54,25 @@ new_nchheatmap<-function(ordert_genes,col="RdBu",labRow = NULL,cexRoww = NULL, c
 
   }
 
+  ###### layout for heatmap +  clinical data + Mean sil width
+  if( (!print_genes) & (!is.null(samples_data))  & (plot_mean_sil) & (!GSE)){
+    lmat<-do.call(rbind,lapply(1:(cluster_number+1), function(i){
+      return(c(0,i,0))
+    }))
+    num_of_data<-ncol(samples_data)
+    lmat<-rbind(lmat,do.call(rbind,lapply((cluster_number+2):((cluster_number+1)+num_of_data), function(i){
+      return(c(0,i,0))
+    })))
+    lmat[1,3]<-((cluster_number+2)+num_of_data)
+    lwid <- c(0.5, 4,2)
+    lhei <- c(1,rep(1,times=cluster_number),rep(0.25,times=num_of_data))
+
+  }
+
+
+
   ###### layout for heatmap + sill. width + clinical data + genes
-  if( (print_genes) & (!is.null(samples_data))  & (!plot_mean_sil)){
+  if( (print_genes) & (!is.null(samples_data))  & (!plot_mean_sil) & (!GSE)){
     lmat<-do.call(rbind,lapply(1:(cluster_number+1), function(i){
       return(c(0,i,0))
     }))
@@ -121,6 +138,28 @@ new_nchheatmap<-function(ordert_genes,col="RdBu",labRow = NULL,cexRoww = NULL, c
 
 
   }
+
+  ###### layout for heatmap  clinical data  +GSE
+
+  if( (print_genes==F) & (!is.null(samples_data))& (!plot_mean_sil) & (GSE==T)){
+    lmat<-do.call(rbind,lapply(1:(cluster_number+1), function(i){
+      return(c(0,i,0,0,0,0))
+    }))
+    num_of_data<-ncol(samples_data)
+    lmat<-rbind(lmat,do.call(rbind,lapply((cluster_number+2):((cluster_number+1)+num_of_data), function(i){
+      return(c(0,i,0,0,0,0))
+    })))
+    lmat[2:(cluster_number+1),3]<-((cluster_number+num_of_data)+2): (((cluster_number+num_of_data)+1)+cluster_number)
+    lmat[2:(cluster_number+1),4]<-((cluster_number+num_of_data)+2): (((cluster_number+num_of_data)+1)+cluster_number)
+    lmat[2:(cluster_number+1),5]<-((cluster_number+num_of_data)+2): (((cluster_number+num_of_data)+1)+cluster_number)
+    lmat[1,3]<-(((cluster_number+num_of_data)+1)+cluster_number)+1
+    lwid <- c(0.5, 4,2)
+    lhei <- c(1,rep(1,times=cluster_number),rep(0.25,times=num_of_data))
+
+
+  }
+
+
 
   ###### layout for heatmap + sill. width  data + genes + Mean Sil width
 
@@ -196,7 +235,7 @@ new_nchheatmap<-function(ordert_genes,col="RdBu",labRow = NULL,cexRoww = NULL, c
     lmat[2:(cluster_number+1),5]<-(((cluster_number+num_of_data)+2)+cluster_number): (((cluster_number+num_of_data)+1)+cluster_number*2)
     lmat[2:(cluster_number+1),6]<-(((cluster_number+num_of_data)+2)+cluster_number): (((cluster_number+num_of_data)+1)+cluster_number*2)
     lmat[1,3]<-(((cluster_number+num_of_data)+2)+cluster_number*2)
-    lwid <- c(0.5, 4,2,6,2)
+    lwid <- c(0.5, 4,2)
     lhei <- c(1,rep(1,times=cluster_number),rep(0.25,times=num_of_data))
 
   }
@@ -220,7 +259,7 @@ new_nchheatmap<-function(ordert_genes,col="RdBu",labRow = NULL,cexRoww = NULL, c
     lmat[2:(cluster_number+1),5]<-(((cluster_number+num_of_data)+2)+cluster_number): (((cluster_number+num_of_data)+1)+cluster_number*2)
     lmat[2:(cluster_number+1),6]<-(((cluster_number+num_of_data)+2)+cluster_number): (((cluster_number+num_of_data)+1)+cluster_number*2)
 
-    lwid <- c(0.5, 4,2,6,2)
+    lwid <- c(0.5, 4,2)
     lhei <- c(1,rep(1,times=cluster_number),rep(0.25,times=num_of_data))
 
   }
@@ -240,7 +279,7 @@ new_nchheatmap<-function(ordert_genes,col="RdBu",labRow = NULL,cexRoww = NULL, c
     lmat[2:(cluster_number+1),5]<-(((cluster_number)+2)+cluster_number): (((cluster_number)+1)+cluster_number*2)
     lmat[2:(cluster_number+1),6]<-(((cluster_number)+2)+cluster_number): (((cluster_number)+1)+cluster_number*2)
 
-    lwid <- c(0.5, 4,2,6,2)
+    lwid <- c(0.5, 4,2)
     lhei <- c(1,rep(1,times=cluster_number))
 
   }
