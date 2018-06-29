@@ -21,7 +21,10 @@ UnSuperClassifier<-function(data,clinical_data=NULL,thr=2){
   number_of_k=res[[3]]
   File_genes=Groups_Sup(me_TOP, me=data, number_of_k,TRw=-1)
   groups_men=File_genes[[2]]
+<<<<<<< HEAD
   File_genes[[1]]
+=======
+>>>>>>> 2fb72a84aafdf89ff0efd86a5cd1a89738b54dd5
   if(is.null(clinical_data)){
     o_g<-Supervised_Cluster_Heatmap(groups_men = groups_men, gene_matrix=File_genes[[1]],
                                     method="PAMR",show_sil=TRUE,threshold = thr
