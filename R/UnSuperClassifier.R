@@ -14,21 +14,21 @@
 #'  as rownames and the clinical triats as columns.
 #'   each trait must be a numeric variable.
 UnSuperClassifier<-function(data,clinical_data=NULL){
-  res<-nchAnalysis::TopPAM(me_x,max_clusters = 8, TOP=1000)
+  res<-nchAnalysis::TopPAM(data,max_clusters = 8, TOP=1000)
   me_TOP=res[[1]]
   dim(me_TOP)
   #-> Wähle Nr of Cluster
   number_of_k=res[[3]]
-  File_genes=Groups_Sup(me_TOP, me=me_x, number_of_k,TRw=-1)
+  File_genes=Groups_Sup(me_TOP, me=data, number_of_k,TRw=-1)
   groups_men=File_genes[[2]]
   me_x=File_genes[[1]]
   if(is.null(clinical_data)){
-    o_g<-Supervised_Cluster_Heatmap(groups_men = groups_men, gene_matrix=me_x,
+    o_g<-Supervised_Cluster_Heatmap(groups_men = groups_men, gene_matrix=data,
                                     method="PAMR",show_sil=TRUE
                                     ,print_genes=T,TOP = 1000,GSE=T,plot_mean_sil=T,sil_mean=res[[2]])
   }
   else{
-    o_g<-Supervised_Cluster_Heatmap(groups_men = groups_men, gene_matrix=me_x,
+    o_g<-Supervised_Cluster_Heatmap(groups_men = groups_men, gene_matrix=data,
                                     method="PAMR",show_clin =TRUE,show_sil=TRUE,samples_data = clinical_data
                                     ,print_genes=T,TOP = 1000,GSE=T,plot_mean_sil=T,sil_mean=res[[2]])
 
