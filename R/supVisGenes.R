@@ -1,5 +1,5 @@
 supVisGenes=function(groups_men, gene_matrix, method,TOP=1000,p_val=0.05,OR=3
-                     ,threshold=2){
+                     ,threshold=2, TOP_Cluster=150){
   me_x=gene_matrix
   number_of_k=max(groups_men$cluster)
   ordert_genes=if(method=="PAMR"){
@@ -31,10 +31,10 @@ supVisGenes=function(groups_men, gene_matrix, method,TOP=1000,p_val=0.05,OR=3
     }))
     ordert_genes<-as.array(lapply(1:number_of_k, function(i){
       list_of_genes<-gene_lists[[i]]
-      if(nrow(list_of_genes)<150){
+      if(nrow(list_of_genes)<TOP_Cluster){
         stop("Please Choose Another Threshold")
       }
-      vector_gene=c(rownames(list_of_genes[1:150, ]),rownames(list_of_genes[(nrow(list_of_genes)-150):nrow(list_of_genes), ]))
+      vector_gene=c(rownames(list_of_genes[1:TOP_Cluster, ]),rownames(list_of_genes[(nrow(list_of_genes)-TOP_Cluster):nrow(list_of_genes), ]))
 
       if (length(vector_gene)>1){return(me_x[vector_gene, ])}
       else{return(NA)}

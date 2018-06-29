@@ -1,3 +1,5 @@
+#' @export cons_clust
+#' @example print("Test)
 ########Consensus Clustering
 cons_clust<-function(data,max_clust,TOPgenes){
   geneset<-data
@@ -10,6 +12,27 @@ cons_clust<-function(data,max_clust,TOPgenes){
                                  title=title,clusterAlg="hc",distance="pearson",
                                  plot="png")
 
-  ##heatmap(results[[number_of_k]][["consensusMatrix"]],cexRow = 0.5)
+  aa=seq(1,max_clust, by=1)
+  length(aa)=suppressWarnings(prod(dim(matrix(aa,ncol = 3))))
+  aa[is.na(aa)]=0
+  lm=matrix(aa, ncol=3, byrow = T)
+  layout(lm, c(1),c(1))
+
+  for(i in 2:max_clust){
+      xx=as.matrix(results[[i]][["consensusMatrix"]])
+      nc=ncol(xx)
+      nr=nrow(xx)
+      xx <- sweep(xx, 1L, rowMeans(xx, na.rm = T), check.margin = FALSE)
+      sx <- apply(xx, 1L, stats::sd, na.rm = T)
+      xx <- sweep(xx, 1L, sx, "/", check.margin = FALSE)
+      xx<-t(xx)
+      graphics::par(mar = c(1, 3, 0, 0))
+      graphics::image(1L:nc, 1L:nr, xx, xlim = 0.5 + c(0, nc), ylim = 0.5 +
+                         c(0, nr), axes = FALSE, xlab = "", ylab = "", col=RColorBrewer::brewer.pal(n = 11, "Spectral"),useRaster=T)
+      graphics::title(main=paste("Cluster",i))
+
+    }
+
+
   return(results)
 }

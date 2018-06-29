@@ -67,11 +67,11 @@
 #'     TOP = 1000,GSE=TRUE,plot_mean_sil=TRUE,sil_mean=res[[2]])
 #'
 #' @export Supervised_Cluster_Heatmap
-Supervised_Cluster_Heatmap=function(groups_men, gene_matrix, method="PAMR",TOP=1000,
+Supervised_Cluster_Heatmap=function(groups_men, gene_matrix, method="PAMR",TOP=1000,TOP_Cluster=150,
                                      show_sil=F,show_clin=F,genes_to_print=5,
                                      print_genes=FALSE,samples_data=NULL,colors="RdBu",
                                      GSE=F,topPaths=5,db="c2",plot_mean_sil=F,sil_mean =NULL,threshold=2){
-  cluster_files=supVisGenes(groups_men,gene_matrix=gene_matrix,method=method,TOP = TOP,threshold = threshold)
+  cluster_files=supVisGenes(groups_men,gene_matrix=gene_matrix,method=method,TOP = TOP,threshold = threshold,TOP_Cluster=TOP_Cluster)
   ordert_genes<-cluster_files[[1]]
   genes_print_list<-cluster_files[[2]]
   sil_w <-if(show_sil){as.data.frame(groups_men[,c("cluster","sil_width"),drop=F])}else{NULL}
