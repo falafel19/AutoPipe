@@ -26,10 +26,11 @@ cons_clust<-function(data,max_clust,TOPgenes){
       sx <- apply(xx, 1L, stats::sd, na.rm = T)
       xx <- sweep(xx, 1L, sx, "/", check.margin = FALSE)
       xx<-t(xx)
-      graphics::par(mar = c(1, 3, 0, 0))
+      graphics::par(mar = c(3, 3, 3, 3))
+
       graphics::image(1L:nc, 1L:nr, xx, xlim = 0.5 + c(0, nc), ylim = 0.5 +
-                         c(0, nr), axes = FALSE, xlab = "", ylab = "", col=RColorBrewer::brewer.pal(n = 11, "Spectral"),useRaster=T)
-      graphics::title(main=paste("Cluster",i))
+                         c(0, nr), axes = FALSE, xlab = "", ylab = "", col=RColorBrewer::brewer.pal(n = 4, "Blues"),useRaster=T)
+      graphics::title(main=paste("ConsensusCluster",i), line = 2)
 
     }
 
