@@ -418,7 +418,7 @@ new_nchheatmap<-function(ordert_genes,col="RdBu",labRow = NULL,cexRoww = NULL, c
         #   color="black"
         # else
         #   color="grey"
-        graphics::polygon(xx,yy,col = color,border = "black",lwd=0.4)
+        graphics::polygon(xx,yy,col = color, border = NA )
       }
     }
   }

@@ -13,7 +13,7 @@
 #' @examples
 #'
 #' library(org.Hs.eg.db)
-#' load(y)
+#' data(y)
 #' cluster_which<-cbind(colnames(y),c(1,1,1,1,1,2,2,2,2,2))
 #' me_x=y
 #' ## calculate best number of clusters and
