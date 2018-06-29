@@ -74,7 +74,7 @@ Supervised_Cluster_Heatmap=function(groups_men, gene_matrix, method="PAMR",TOP=1
   cluster_files=supVisGenes(groups_men,gene_matrix=gene_matrix,method=method,TOP = TOP,threshold = threshold,TOP_Cluster=TOP_Cluster)
   ordert_genes<-cluster_files[[1]]
   genes_print_list<-cluster_files[[2]]
-  sil_w <-if(show_sil){as.data.frame(groups_men[,c("cluster","sil_width"),drop=F])}else{NULL}
+  sil_w <-if(show_sil){as.data.frame(groups_men[,c("cluster","sil_width"),drop=FALSE])}else{NULL}
 
   new_nchheatmap(ordert_genes, sil_width =sil_w
                  ,samples_data = samples_data,print_genes = print_genes,list_of_genes = genes_print_list

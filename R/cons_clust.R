@@ -1,7 +1,20 @@
+#' A function to plot do a Consensus clustering to validate the results
+#'
+#' this function  calls the ConsensusClusterPlus function with thedaraset and plots a plot
+#' with the heatmaps of the clustering for each number of clusters from 2 to max_clust
+#'
+#' @usage cons_clust(data,max_clust,TOPgenes)
+#' @param data this is the data for the ConsensusClusterPlus
+#' @param max_clust the max number of clusters that should be evaluated.
+#' @param TOPgenes  the number of the top genes to choose for the clustering
+#' @return plots a plot with all the heatmaps from the ConsensusClusterPlus for the number ofd clusters 2 to max_clust
+#'  the same return value as the COnsensusClusterPlus
 #' @export cons_clust
-#' @example print("Test)
+#' @example
+#' data(rna)
+#' cons_clust(rna,5,TOPgenes=150)
 ########Consensus Clustering
-cons_clust<-function(data,max_clust,TOPgenes){
+cons_clust<-function(data,max_clust=5,TOPgenes=150){
   geneset<-data
   dim(geneset)
   mads=apply(geneset,1,stats::mad)
@@ -9,8 +22,7 @@ cons_clust<-function(data,max_clust,TOPgenes){
   geneset= sweep(geneset,1, apply(geneset,1,stats::median,na.rm=T))
   title=tempdir()
   results = ConsensusClusterPlus::ConsensusClusterPlus(as.matrix(geneset),maxK=max_clust,reps=50,pItem=0.8,pFeature=1,
-                                 title=title,clusterAlg="hc",distance="pearson",
-                                 plot="png")
+                                 title=title,clusterAlg="hc",distance="euclidean")
 
   aa=seq(1,max_clust, by=1)
   length(aa)=suppressWarnings(prod(dim(matrix(aa,ncol = 3))))
