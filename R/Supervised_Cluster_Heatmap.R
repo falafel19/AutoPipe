@@ -9,10 +9,10 @@
 #' (see Details)
 #'
 #'
-#' @usage Supervised_Cluster_Heatmap(groups_men, gene_matrix, method="PAMR",TOP=1000,
-#' show_sil=F,show_clin=F,genes_to_print=5,
+#' @usage Supervised_Cluster_Heatmap(groups_men, gene_matrix, method="PAMR",TOP=1000,TOP_Cluster=150,
+#' show_sil=FALSE,show_clin=FALSE,genes_to_print=5,
 #' print_genes=FALSE,samples_data=NULL,colors="RdBu",
-#' GSE=F,topPaths=5,db="c1",plot_mean_sil=F,sil_mean =NULL,threshold=2)
+#' GSE=FALSE,topPaths=5,db="c2",plot_mean_sil=FALSE,sil_mean =NULL,threshold=2)
 #' @param groups_men the data frame with the group clustering that the function Groups_Sup or top_supervised (2. place on the list) returns with
 #' the data about each sample and its coressponding cluster.
 #' @param gene_matrix the matrix of n selected genes that the function Groups_Sup returns
@@ -44,6 +44,7 @@
 #' @param sil_mean A vector with the mean Silhouette widths forfor the number of clusters. The first
 #' value should be for 2 Clusters. 2nd is for 3 clusters and so on.
 #' @param threshold the threshhold for the pam analysis default is 2.
+#' @param TOP_Cluster a numeric variable for the number of genes to include in the clusters. Default is 150.
 #' @details sample data should be a data.frame with the sample names
 #'  as rownames and the clinical triats as columns.
 #'   each trait must be a numeric variable.
@@ -68,9 +69,9 @@
 #'
 #' @export Supervised_Cluster_Heatmap
 Supervised_Cluster_Heatmap=function(groups_men, gene_matrix, method="PAMR",TOP=1000,TOP_Cluster=150,
-                                     show_sil=F,show_clin=F,genes_to_print=5,
+                                     show_sil=FALSE,show_clin=FALSE,genes_to_print=5,
                                      print_genes=FALSE,samples_data=NULL,colors="RdBu",
-                                     GSE=F,topPaths=5,db="c2",plot_mean_sil=F,sil_mean =NULL,threshold=2){
+                                     GSE=FALSE,topPaths=5,db="c2",plot_mean_sil=FALSE,sil_mean =NULL,threshold=2){
   cluster_files=supVisGenes(groups_men,gene_matrix=gene_matrix,method=method,TOP = TOP,threshold = threshold,TOP_Cluster=TOP_Cluster)
   ordert_genes<-cluster_files[[1]]
   genes_print_list<-cluster_files[[2]]

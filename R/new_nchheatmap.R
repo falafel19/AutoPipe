@@ -1,7 +1,7 @@
 new_nchheatmap<-function(ordert_genes,col="RdBu",labRow = NULL,cexRoww = NULL, cexColl = NULL,
          labCol = NULL, main = NULL, xlab = NULL, ylab = NULL,sil_width=NULL,
          samples_data=NULL,genes_to_print=5,print_genes=FALSE,
-         list_of_genes=NULL,plot_mean_sil=F, sil_mean=NULL,GSE=F,topPaths=5,db="c2"){
+         list_of_genes=NULL,plot_mean_sil=FALSE, sil_mean=NULL,GSE=FALSE,topPaths=5,db="c2"){
 
   ################################ formatting the layout
   cluster_number<-length(ordert_genes)

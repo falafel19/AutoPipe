@@ -4,10 +4,10 @@
 \alias{Supervised_Cluster_Heatmap}
 \title{Produce a Heatmap using a Supervised clustering Algorithm}
 \usage{
-Supervised_Cluster_Heatmap(groups_men, gene_matrix, method="PAMR",TOP=1000,
-show_sil=F,show_clin=F,genes_to_print=5,
+Supervised_Cluster_Heatmap(groups_men, gene_matrix, method="PAMR",TOP=1000,TOP_Cluster=150,
+show_sil=FALSE,show_clin=FALSE,genes_to_print=5,
 print_genes=FALSE,samples_data=NULL,colors="RdBu",
-GSE=F,topPaths=5,db="c1",plot_mean_sil=F,sil_mean =NULL,threshold=2)
+GSE=FALSE,topPaths=5,db="c2",plot_mean_sil=FALSE,sil_mean =NULL,threshold=2)
 }
 \arguments{
 \item{groups_men}{the data frame with the group clustering that the function Groups_Sup or top_supervised (2. place on the list) returns with
@@ -19,6 +19,8 @@ the data about each sample and its coressponding cluster.}
 other methods are SAM and our own "EXReg" (see details)}
 
 \item{TOP}{the number of the top genes to take. the default value is 1000.}
+
+\item{TOP_Cluster}{a numeric variable for the number of genes to include in the clusters. Default is 150.}
 
 \item{show_sil}{a logical value that indicates if the function should show
 the Silhouette width for each sample. Default is FALSE.}

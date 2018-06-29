@@ -10,7 +10,7 @@
 #' @return plots a plot with all the heatmaps from the ConsensusClusterPlus for the number ofd clusters 2 to max_clust
 #'  the same return value as the COnsensusClusterPlus
 #' @export cons_clust
-#' @example
+#' @examples
 #' data(rna)
 #' cons_clust(rna,5,TOPgenes=150)
 ########Consensus Clustering
@@ -28,7 +28,7 @@ cons_clust<-function(data,max_clust=5,TOPgenes=150){
   length(aa)=suppressWarnings(prod(dim(matrix(aa,ncol = 3))))
   aa[is.na(aa)]=0
   lm=matrix(aa, ncol=3, byrow = T)
-  layout(lm, c(1),c(1))
+  graphics::layout(lm, c(1),c(1))
 
   for(i in 2:max_clust){
       xx=as.matrix(results[[i]][["consensusMatrix"]])

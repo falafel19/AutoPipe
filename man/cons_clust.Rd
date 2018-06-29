@@ -21,3 +21,7 @@ plots a plot with all the heatmaps from the ConsensusClusterPlus for the number 
 this function  calls the ConsensusClusterPlus function with thedaraset and plots a plot
 with the heatmaps of the clustering for each number of clusters from 2 to max_clust
 }
+\examples{
+data(rna)
+cons_clust(rna,5,TOPgenes=150)
+}

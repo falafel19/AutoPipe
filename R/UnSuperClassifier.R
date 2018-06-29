@@ -2,7 +2,7 @@
 #'
 #' A function for unsupervised Clustering of the data
 #'
-#' @usage UnSuperClassifier(data,clinical_data=NULL)
+#' @usage UnSuperClassifier(data,clinical_data=NULL,thr=2)
 #' @export UnSuperClassifier
 #'
 #' @param data the data for the clustering. Data should be in the following format: samples in columns and
@@ -10,9 +10,11 @@
 #' plot a gene set enrichment analysis.
 #' @param clinical_data the clinical data provided by the user to plot under the heatmap. it will be
 #'  plotted only if show_clin is TRUE. Default value is NULL. see details for format.
+#' @param thr The threshold for the PAMR algorithm default is 2.
 #'  @details sample data should be a data.frame with the sample names
 #'  as rownames and the clinical triats as columns.
 #'   each trait must be a numeric variable.
+#'   @return the function is an autated Pipeline for clustering it plot cluster analysis for the geneset
 UnSuperClassifier<-function(data,clinical_data=NULL,thr=2){
   res<-nchAnalysis::TopPAM(data,max_clusters = 8, TOP=1000)
   me_TOP=res[[1]]

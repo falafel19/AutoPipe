@@ -26,9 +26,9 @@ when perfoming a supervised clustering the user should run this function in orde
 \examples{
 
 library(org.Hs.eg.db)
-data(y)
-cluster_which<-cbind(colnames(y),c(1,1,1,1,1,2,2,2,2,2))
-me_x=y
+data(rna)
+cluster_which<-cbind(colnames(rna),c(rep(1,times=24),rep(2,times=24)))
+me_x=rna
 ## calculate best number of clusters and
 res<-top_supervised(me_x,TOP = 1000,cluster_which)
 me_TOP=res[[1]]
@@ -38,6 +38,6 @@ me_x=me_TOP
 colnames(me_x)
 o_g<-Supervised_Cluster_Heatmap(groups_men = groups_men, gene_matrix=me_x,
                                method="PAMR",show_sil=TRUE,print_genes=TRUE,threshold = 1,
-                               TOP = 1000,GSE=TRUE,plot_mean_sil=F,sil_mean=res[[2]],
-                               samples_data = as.data.frame(groups_men[,1,drop=F]))
+                               TOP = 1000,GSE=TRUE,plot_mean_sil=FALSE,sil_mean=res[[2]],
+                               samples_data = as.data.frame(groups_men[,1,drop=FALSE]))
 }

@@ -4,7 +4,7 @@
 \alias{UnSuperClassifier}
 \title{Unsupervised Clustering}
 \usage{
-UnSuperClassifier(data,clinical_data=NULL)
+UnSuperClassifier(data,clinical_data=NULL,thr=2)
 }
 \arguments{
 \item{data}{the data for the clustering. Data should be in the following format: samples in columns and
@@ -12,7 +12,9 @@ the genes in the rows (colnames and rownames accordingly). The rownames should b
 plot a gene set enrichment analysis.}
 
 \item{clinical_data}{the clinical data provided by the user to plot under the heatmap. it will be
-plotted only if show_clin is TRUE. Default value is NULL. see details for format.
+plotted only if show_clin is TRUE. Default value is NULL. see details for format.}
+
+\item{thr}{The threshold for the PAMR algorithm default is 2.
 @details sample data should be a data.frame with the sample names
 as rownames and the clinical triats as columns.
  each trait must be a numeric variable.}
