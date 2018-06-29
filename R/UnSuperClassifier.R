@@ -13,7 +13,7 @@
 #'  @details sample data should be a data.frame with the sample names
 #'  as rownames and the clinical triats as columns.
 #'   each trait must be a numeric variable.
-UnSuperClassifier<-function(data,clinical_data=NULL){
+UnSuperClassifier<-function(data,clinical_data=NULL,thr=2){
   res<-nchAnalysis::TopPAM(data,max_clusters = 8, TOP=1000)
   me_TOP=res[[1]]
   dim(me_TOP)
@@ -24,11 +24,11 @@ UnSuperClassifier<-function(data,clinical_data=NULL){
   me_x=File_genes[[1]]
   if(is.null(clinical_data)){
     o_g<-Supervised_Cluster_Heatmap(groups_men = groups_men, gene_matrix=data,
-                                    method="PAMR",show_sil=TRUE
+                                    method="PAMR",show_sil=TRUE,threshold = thr
                                     ,print_genes=T,TOP = 1000,GSE=T,plot_mean_sil=T,sil_mean=res[[2]])
   }
   else{
-    o_g<-Supervised_Cluster_Heatmap(groups_men = groups_men, gene_matrix=data,
+    o_g<-Supervised_Cluster_Heatmap(groups_men = groups_men, gene_matrix=data,threshold=thr,
                                     method="PAMR",show_clin =TRUE,show_sil=TRUE,samples_data = clinical_data
                                     ,print_genes=T,TOP = 1000,GSE=T,plot_mean_sil=T,sil_mean=res[[2]])
 
