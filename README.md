@@ -78,6 +78,13 @@ me_x=File_genes[[1]]
 # groups_men contain informations of each sample and cluster, this could be adapted in case of a supervised analysis
 
 o_g<-Supervised_Cluster_Heatmap(groups_men = groups_men, gene_matrix=me_x, method="PAMR",show_sil=TRUE,print_genes=TRUE, TOP = 1000,GSE=TRUE,plot_mean_sil=TRUE,sil_mean=res[[2]])
+
+#Validate with Consensus Cluster or tSNE
+
+cons_clust(me_x,max_clust=8, TOP=1000)
+AutoPipe.tSNE(me=me_x)
+
+
 ```
 
 
