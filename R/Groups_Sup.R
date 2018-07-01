@@ -1,4 +1,4 @@
-#' clsuter the samples
+#' cluster the samples
 #'
 #' This function clusters the samples into x clusters.
 #' @usage Groups_Sup(me_TOP, me, number_of_k,TRw)
@@ -10,12 +10,12 @@
 #' @param TRw threshold for the elemenation of the samples with a Silhouette width lower than TRw.
 #'  Default value is -1.
 #'
-#'#' @examples
+#' @examples
 #' ## load data
 #' library(org.Hs.eg.db)
 #' data(rna)
 #' me_x=rna
-#' res<-nchAnalysis::TopPAM(me_x,max_clusters = 8, TOP=1000)
+#' res<-AutoPipe::TopPAM(me_x,max_clusters = 8, TOP=1000)
 #' me_TOP=res[[1]]
 #' number_of_k=res[[3]]
 #' File_genes=Groups_Sup(me_TOP, me=me_x, number_of_k,TRw=-1)

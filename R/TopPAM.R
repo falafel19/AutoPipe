@@ -17,7 +17,7 @@
 #' #' ## load data
 #' data(rna)
 #' me_x=rna
-#' res<-nchAnalysis::TopPAM(me_x,max_clusters = 8, TOP=1000)
+#' res<-AutoPipe::TopPAM(me_x,max_clusters = 8, TOP=1000)
 #' me_TOP=res[[1]]
 #' number_of_k=res[[3]]
 #'

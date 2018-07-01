@@ -76,11 +76,11 @@ sample data should be a data.frame with the sample names
 \examples{
 ##load the org.Hs.eg Library
 library(org.Hs.eg.db)
-#' ## load data
+## load data
 data(rna)
 me_x=rna
 ## calculate best number of clusters and
-res<-nchAnalysis::TopPAM(me_x,max_clusters = 8, TOP=1000)
+res<-AutoPipe::TopPAM(me_x,max_clusters = 8, TOP=1000)
 me_TOP=res[[1]]
 number_of_k=res[[3]]
 File_genes=Groups_Sup(me_TOP, me=me_x, number_of_k,TRw=-1)
