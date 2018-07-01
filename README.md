@@ -29,7 +29,7 @@ Install with devtools
 ```
 install.packages("devtools")
 library(devtools)
-install_github("heilandd/AutoPipe")
+install_github("falafel19/AutoPipe")
 ```
 ## Unsupervised Cluster Analysis
 
