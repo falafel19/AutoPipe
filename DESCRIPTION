@@ -19,5 +19,6 @@ Imports:
   ,org.Hs.eg.db
   ,RColorBrewer
   ,ConsensusClusterPlus
+  ,Rtsne
 Depends: R (>= 2.10.0)
 RoxygenNote: 6.0.1
