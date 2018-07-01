@@ -3,24 +3,20 @@
 #' This function is used to upload a table into R for further use in the AutoPipe
 #'
 #'
-#' @usage read.expression.file(file, format="csv", sep";",gene_name="SYMBOL",Trans=F)
+#' @usage read_expression_file(file, format="csv", sep";",gene_name="SYMBOL",Trans=F)
 #' 
 #' @param file The path of the expression table
 #' @param format The format of the table "csv" or "txt"
 #' @param sep The seperator of the input table
 #' @param gene_name Genes are given in "SYMBOL" or "ENTREZID"
 #' @param Trans Need Matrix Transpose TRUE or FALSE
-#' 
-
+#' @return A data.frame with a gene expression matrix
 #'
-#' @export read.expression.file
+#' @export read_expression_file
 
-read.expression.file=function(file, format = "csv", sep=";",gene_name="SYMBOL", Trans=F){
+read_expression_file=function(file, format = "csv", sep=";",gene_name="SYMBOL", Trans=F){
   
   print(paste("----- Start Import --------"))
-  
-  require(org.Hs.eg.db)
-  
   data_out=if(format=="csv"){
     
     data_out=utils::read.csv(file,row.names=1,header=T,sep = sep )

@@ -1,8 +1,8 @@
 Package: AutoPipe
 Type: Package
-Title: What the Package Does (Title Case)
+Title: AUtomated TranscriptOme Classifier Pipeline (AutoPipe): An R-Package for Comprehensive Transcriptome Analysis
 Version: 0.1.0
-Author: Karam Daka
+Author: Karam Daka & Dieter Henrik Heiland
 Maintainer: The package maintainer <k.dacca@gmail.com>
 Description: More about what it does (maybe more than one line)
     Use four spaces when indenting paragraphs within the Description.
@@ -20,5 +20,6 @@ Imports:
   ,RColorBrewer
   ,ConsensusClusterPlus
   ,Rtsne
+  ,clusterProfiler
 Depends: R (>= 2.10.0)
 RoxygenNote: 6.0.1
