@@ -1,3 +1,6 @@
+
+
+
 new_nchheatmap<-function(ordert_genes,col="RdBu",labRow = NULL,cexRoww = NULL, cexColl = NULL,
          labCol = NULL, main = NULL, xlab = NULL, ylab = NULL,sil_width=NULL,
          samples_data=NULL,genes_to_print=5,print_genes=FALSE,
@@ -21,6 +24,7 @@ new_nchheatmap<-function(ordert_genes,col="RdBu",labRow = NULL,cexRoww = NULL, c
 
   ###### layout for heatmap + sill. width
   if( (!print_genes) & (is.null(samples_data))  & (!plot_mean_sil) & (!GSE)){
+    print("Use Layout Format 1")
     lmat<-do.call(rbind,lapply(1:(cluster_number+1), function(i){
       return(c(0,i,0))
     }))
@@ -31,6 +35,7 @@ new_nchheatmap<-function(ordert_genes,col="RdBu",labRow = NULL,cexRoww = NULL, c
 
   ###### layout for heatmap + sill. width + Mean sil
   if( (!print_genes) & (is.null(samples_data))  & (plot_mean_sil) & (!GSE)){
+    print("Use Layout Format 2")
     lmat<-do.call(rbind,lapply(1:(cluster_number+1), function(i){
       return(c(0,i,0))
     }))
@@ -42,6 +47,7 @@ new_nchheatmap<-function(ordert_genes,col="RdBu",labRow = NULL,cexRoww = NULL, c
 
   ###### layout for heatmap + sill. width + clinical data
   if( (!print_genes) & (!is.null(samples_data))  & (!plot_mean_sil) & (!GSE)){
+    print("Use Layout Format 3")
     lmat<-do.call(rbind,lapply(1:(cluster_number+1), function(i){
       return(c(0,i,0))
     }))
@@ -56,6 +62,7 @@ new_nchheatmap<-function(ordert_genes,col="RdBu",labRow = NULL,cexRoww = NULL, c
 
   ###### layout for heatmap +  clinical data + Mean sil width
   if( (!print_genes) & (!is.null(samples_data))  & (plot_mean_sil) & (!GSE)){
+    print("Use Layout Format 4")
     lmat<-do.call(rbind,lapply(1:(cluster_number+1), function(i){
       return(c(0,i,0))
     }))
@@ -73,6 +80,7 @@ new_nchheatmap<-function(ordert_genes,col="RdBu",labRow = NULL,cexRoww = NULL, c
 
   ###### layout for heatmap + sill. width + clinical data + genes
   if( (print_genes) & (!is.null(samples_data))  & (!plot_mean_sil) & (!GSE)){
+    print("Use Layout Format 5")
     lmat<-do.call(rbind,lapply(1:(cluster_number+1), function(i){
       return(c(0,i,0))
     }))
@@ -89,6 +97,7 @@ new_nchheatmap<-function(ordert_genes,col="RdBu",labRow = NULL,cexRoww = NULL, c
   ###### layout for heatmap + sill. width + clinical data + genes + Mean Sil width
 
   if( (print_genes) & (!is.null(samples_data)) & (plot_mean_sil) & (GSE==F)){
+    print("Use Layout Format 6")
     lmat<-do.call(rbind,lapply(1:(cluster_number+1), function(i){
       return(c(0,i,0))
     }))
@@ -108,6 +117,7 @@ new_nchheatmap<-function(ordert_genes,col="RdBu",labRow = NULL,cexRoww = NULL, c
 
 
   if( (print_genes) & (is.null(samples_data))  & (plot_mean_sil) & (GSE==F)){
+    print("Use Layout Format 7")
     lmat<-do.call(rbind,lapply(1:(cluster_number+1), function(i){
       return(c(0,i,0))
     }))
@@ -122,6 +132,7 @@ new_nchheatmap<-function(ordert_genes,col="RdBu",labRow = NULL,cexRoww = NULL, c
   ###### layout for heatmap + sill. width + clinical data + genes + Mean Sil width +GSE
 
   if( (print_genes==F) & (!is.null(samples_data))& (plot_mean_sil) & (GSE==T)){
+    print("Use Layout Format 8")
     lmat<-do.call(rbind,lapply(1:(cluster_number+1), function(i){
       return(c(0,i,0,0,0,0))
     }))
@@ -142,6 +153,7 @@ new_nchheatmap<-function(ordert_genes,col="RdBu",labRow = NULL,cexRoww = NULL, c
   ###### layout for heatmap  clinical data  +GSE
 
   if( (print_genes==F) & (!is.null(samples_data))& (!plot_mean_sil) & (GSE==T)){
+    print("Use Layout Format 9")
     lmat<-do.call(rbind,lapply(1:(cluster_number+1), function(i){
       return(c(0,i,0,0,0,0))
     }))
@@ -165,6 +177,7 @@ new_nchheatmap<-function(ordert_genes,col="RdBu",labRow = NULL,cexRoww = NULL, c
 
 
   if( (print_genes==F) & (is.null(samples_data))  & (plot_mean_sil) & (GSE==T)){
+    print("Use Layout Format 10")
     lmat<-do.call(rbind,lapply(1:(cluster_number+1), function(i){
       return(c(0,i,0,0,0,0))
     }))
@@ -183,6 +196,7 @@ new_nchheatmap<-function(ordert_genes,col="RdBu",labRow = NULL,cexRoww = NULL, c
   ###### layout for heatmap + sill. width + GSE + without Mean Sil width without clinical data
 
   if( (print_genes==F) & (is.null(samples_data)) & (plot_mean_sil) & (GSE==T)){
+    print("Use Layout Format 11")
     lmat<-do.call(rbind,lapply(1:(cluster_number+1), function(i){
       return(c(0,i,0,0,0,0))
     }))
@@ -201,6 +215,7 @@ new_nchheatmap<-function(ordert_genes,col="RdBu",labRow = NULL,cexRoww = NULL, c
   ###### layout for heatmap + sill. width + GSE + Mean Sil width without clinical data
 
   if( (print_genes==F) & (is.null(samples_data))  & (!plot_mean_sil) & (GSE==T)){
+    print("Use Layout Format 12")
     lmat<-do.call(rbind,lapply(1:(cluster_number+1), function(i){
       return(c(0,i,0,0,0,0))
     }))
@@ -221,13 +236,18 @@ new_nchheatmap<-function(ordert_genes,col="RdBu",labRow = NULL,cexRoww = NULL, c
 
   if( (print_genes) & (!is.null(samples_data))
       &(plot_mean_sil) & (GSE)){
+    print("Use Layout Format 13")
     lmat<-do.call(rbind,lapply(1:(cluster_number+1), function(i){
       return(c(0,i,0,0,0,0,0))
     }))
+    #add for sample data
     num_of_data<-ncol(samples_data)
     lmat<-rbind(lmat,do.call(rbind,lapply((cluster_number+2):((cluster_number+1)+num_of_data), function(i){
       return(c(0,i,0,0,0,0,0))
     })))
+    
+    
+    
     ##Genes
     lmat[2:(cluster_number+1),3]<-((cluster_number+num_of_data)+2): (((cluster_number+num_of_data)+1)+cluster_number)
     ##GSE
@@ -235,6 +255,14 @@ new_nchheatmap<-function(ordert_genes,col="RdBu",labRow = NULL,cexRoww = NULL, c
     lmat[2:(cluster_number+1),5]<-(((cluster_number+num_of_data)+2)+cluster_number): (((cluster_number+num_of_data)+1)+cluster_number*2)
     lmat[2:(cluster_number+1),6]<-(((cluster_number+num_of_data)+2)+cluster_number): (((cluster_number+num_of_data)+1)+cluster_number*2)
     lmat[1,3]<-(((cluster_number+num_of_data)+2)+cluster_number*2)
+    
+    #add legende for sample data
+    #start_nr=(((cluster_number+num_of_data)+2)+cluster_number*2)
+    #for(i in 1:num_of_data){
+     # lmat[i+(1+cluster_number),3]=start_nr+i
+    #}
+    
+    
     lwid <- c(0.5, 4,2)
     lhei <- c(1,rep(1,times=cluster_number),rep(0.25,times=num_of_data))
 
@@ -245,6 +273,7 @@ new_nchheatmap<-function(ordert_genes,col="RdBu",labRow = NULL,cexRoww = NULL, c
 
   if( (print_genes) & (!is.null(samples_data))
       &(!plot_mean_sil) & (GSE)){
+    print("Use Layout Format 14")
     lmat<-do.call(rbind,lapply(1:(cluster_number+1), function(i){
       return(c(0,i,0,0,0,0,0))
     }))
@@ -269,6 +298,7 @@ new_nchheatmap<-function(ordert_genes,col="RdBu",labRow = NULL,cexRoww = NULL, c
 
   if( (print_genes) & (is.null(samples_data))
       &(!plot_mean_sil) & (GSE)){
+    print("Use Layout Format 15")
     lmat<-do.call(rbind,lapply(1:(cluster_number+1), function(i){
       return(c(0,i,0,0,0,0,0))
     }))
@@ -302,6 +332,7 @@ new_nchheatmap<-function(ordert_genes,col="RdBu",labRow = NULL,cexRoww = NULL, c
       return(c(0,i,0,0,0,0,0))
     }))
     #Text
+    print("Use Layout Format 17")
     lmat[2:(cluster_number+1),3]<-((cluster_number)+2): (((cluster_number)+1)+cluster_number)
     #GSEA
     lmat[2:(cluster_number+1),4]<-((((cluster_number)+1)+cluster_number)+1) : ((((cluster_number)+1)+cluster_number)+cluster_number)
@@ -322,6 +353,7 @@ new_nchheatmap<-function(ordert_genes,col="RdBu",labRow = NULL,cexRoww = NULL, c
   ######### layout without clinical data with genes without GSE with mean sil width
   if( (print_genes) & (is.null(samples_data))  & (plot_mean_sil)
       & (!GSE)){
+    print("Use Layout Format 18")
     lmat<-do.call(rbind,lapply(1:(cluster_number+1), function(i){
       return(c(0,i,0))
     }))
@@ -335,6 +367,7 @@ new_nchheatmap<-function(ordert_genes,col="RdBu",labRow = NULL,cexRoww = NULL, c
   ######### layout without clinical data with genes without GSE without mean sil width
   if( (print_genes) & (is.null(samples_data))  & (!plot_mean_sil)
       & (!GSE)){
+    print("Use Layout Format 19")
     lmat<-do.call(rbind,lapply(1:(cluster_number+1), function(i){
       return(c(0,i,0))
     }))
@@ -352,6 +385,9 @@ new_nchheatmap<-function(ordert_genes,col="RdBu",labRow = NULL,cexRoww = NULL, c
     lmat<-lmat-1
     lmat[which(lmat<0)]<-0
   }
+  
+  print(lmat)
+  
   graphics::layout(lmat, widths = lwid, heights = lhei, respect = TRUE)
 
   ################# #Add Silhouette####################
@@ -505,5 +541,37 @@ new_nchheatmap<-function(ordert_genes,col="RdBu",labRow = NULL,cexRoww = NULL, c
     graphics::title(ylab = "Mean Sil.Width", line = 2,cex.lab=0.6)
 
   }
+  
+  
+  ######################################### clinical data legende
+  if(!is.null(samples_data)){
+    for(j in 1:ncol(samples_data)){
+      graphics::par(mar = c(0.5, 3,0,0))
+      graphics::plot(c(0,20), c(1,10), bty="n",type="n",xaxs="i",xlab="",ylab="",axes=FALSE)#
+      
+      plot_w=nc
+      plot_h=5
+      diff_at<-unique(samples_data[,j])
+      num_of_at<-length(diff_at)
+      graphics::text(x=0.5,y=7,colnames(samples_data)[j],cex=0.7,adj = c(0,0))
+      pallb<-RColorBrewer::brewer.pal(n =max(num_of_at,3) ,name = "Paired")
+      for(iii in 1:length(pallb)){
+        ff=iii/2
+        xx=c(3.5, 4,4,3.5)
+        yy=c((8-ff),(8-ff),(8-ff+0.25),(8-ff+0.25))
+        graphics::polygon(xx,yy, col = pallb[iii], border = NA )
+        graphics::text(x=4.5,y=8-ff,diff_at[iii],cex=0.7,adj = c(0,0))
+        
+      }
+      
+    }
+  }
+  
+  
+  
+  
+  
+  
+  
   ##grDevices::dev.off()
 }
