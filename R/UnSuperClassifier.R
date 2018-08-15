@@ -2,7 +2,7 @@
 #'
 #' A function for unsupervised Clustering of the data
 #'
-#' @usage UnSuperClassifier(data,clinical_data=NULL,TOP_Cluster=150,thr=2)
+#' @usage UnSuperClassifier(data,clinical_data=NULL,thr=2,TOP_Cluster=150)
 #' @export UnSuperClassifier
 #'
 #' @param data the data for the clustering. Data should be in the following format: samples in columns and

@@ -80,5 +80,5 @@ Supervised_Cluster_Heatmap=function(groups_men, gene_matrix, method="PAMR",TOP=1
   new_nchheatmap(ordert_genes, sil_width =sil_w
                  ,samples_data = samples_data,print_genes = print_genes,list_of_genes = genes_print_list
                  ,plot_mean_sil=plot_mean_sil,sil_mean =sil_mean,
-                 genes_to_print=genes_to_print,col=colors,GSE=GSE,db=db)
+                 genes_to_print=genes_to_print,col=colors,GSE=GSE,db=db,topPaths=topPaths)
 }

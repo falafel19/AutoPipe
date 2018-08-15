@@ -52,11 +52,11 @@ new_nchheatmap<-function(ordert_genes,col="RdBu",labRow = NULL,cexRoww = NULL, c
       return(c(0,i,0))
     }))
     num_of_data<-ncol(samples_data)
-    lmat<-rbind(lmat,do.call(rbind,lapply((cluster_number+2):((cluster_number+2)+num_of_data), function(i){
+    lmat<-rbind(lmat,do.call(rbind,lapply((cluster_number+2):((cluster_number+2)+2*num_of_data), function(i){
       return(c(0,i,0))
     })))
     lwid <- c(0.5, 4,0.5)
-    lhei <- c(1,rep(1,times=cluster_number),rep(0.25,times=num_of_data))
+    lhei <- c(1,rep(1,times=cluster_number),rep(0.25,times=num_of_data),rep(0.5,times=num_of_data))
 
   }
 
@@ -67,12 +67,12 @@ new_nchheatmap<-function(ordert_genes,col="RdBu",labRow = NULL,cexRoww = NULL, c
       return(c(0,i,0))
     }))
     num_of_data<-ncol(samples_data)
-    lmat<-rbind(lmat,do.call(rbind,lapply((cluster_number+2):((cluster_number+1)+num_of_data), function(i){
+    lmat<-rbind(lmat,do.call(rbind,lapply((cluster_number+2):((cluster_number+1)+2*num_of_data), function(i){
       return(c(0,i,0))
     })))
-    lmat[1,3]<-((cluster_number+2)+num_of_data)
+    lmat[1,3]<-((cluster_number+2)+2*num_of_data)
     lwid <- c(0.5, 4,2)
-    lhei <- c(1,rep(1,times=cluster_number),rep(0.25,times=num_of_data))
+    lhei <- c(1,rep(1,times=cluster_number),rep(0.25,times=num_of_data),rep(0.5,times=num_of_data))
 
   }
 
@@ -85,12 +85,12 @@ new_nchheatmap<-function(ordert_genes,col="RdBu",labRow = NULL,cexRoww = NULL, c
       return(c(0,i,0))
     }))
     num_of_data<-ncol(samples_data)
-    lmat<-rbind(lmat,do.call(rbind,lapply((cluster_number+2):((cluster_number+1)+num_of_data), function(i){
+    lmat<-rbind(lmat,do.call(rbind,lapply((cluster_number+2):((cluster_number+1)+2*num_of_data), function(i){
       return(c(0,i,0))
     })))
-    lmat[2:(cluster_number+1),3]<-((cluster_number+num_of_data)+2): (((cluster_number+num_of_data)+1)+cluster_number)
+    lmat[2:(cluster_number+1),3]<-((cluster_number+2*num_of_data)+2): (((cluster_number+2*num_of_data)+1)+cluster_number)
     lwid <- c(0.5, 4,2)
-    lhei <- c(1,rep(1,times=cluster_number),rep(0.25,times=num_of_data))
+    lhei <- c(1,rep(1,times=cluster_number),rep(0.25,times=num_of_data),rep(0.5,times=num_of_data))
 
   }
 
@@ -102,13 +102,13 @@ new_nchheatmap<-function(ordert_genes,col="RdBu",labRow = NULL,cexRoww = NULL, c
       return(c(0,i,0))
     }))
     num_of_data<-ncol(samples_data)
-    lmat<-rbind(lmat,do.call(rbind,lapply((cluster_number+2):((cluster_number+1)+num_of_data), function(i){
+    lmat<-rbind(lmat,do.call(rbind,lapply((cluster_number+2):((cluster_number+1)+2*num_of_data), function(i){
       return(c(0,i,0))
     })))
-    lmat[2:(cluster_number+1),3]<-((cluster_number+num_of_data)+2): (((cluster_number+num_of_data)+1)+cluster_number)
-    lmat[1,3]<-(((cluster_number+num_of_data)+1)+cluster_number)+1
+    lmat[2:(cluster_number+1),3]<-((cluster_number+2*num_of_data)+2): (((cluster_number+2*num_of_data)+1)+cluster_number)
+    lmat[1,3]<-(((cluster_number+2*num_of_data)+1)+cluster_number)+1
     lwid <- c(0.5, 4,2)
-    lhei <- c(1,rep(1,times=cluster_number),rep(0.25,times=num_of_data))
+    lhei <- c(1,rep(1,times=cluster_number),rep(0.25,times=num_of_data),rep(0.5,times=num_of_data))
 
 
   }
@@ -137,15 +137,15 @@ new_nchheatmap<-function(ordert_genes,col="RdBu",labRow = NULL,cexRoww = NULL, c
       return(c(0,i,0,0,0,0))
     }))
     num_of_data<-ncol(samples_data)
-    lmat<-rbind(lmat,do.call(rbind,lapply((cluster_number+2):((cluster_number+1)+num_of_data), function(i){
+    lmat<-rbind(lmat,do.call(rbind,lapply((cluster_number+2):((cluster_number+1)+2*num_of_data), function(i){
       return(c(0,i,0,0,0,0))
     })))
-    lmat[2:(cluster_number+1),3]<-((cluster_number+num_of_data)+2): (((cluster_number+num_of_data)+1)+cluster_number)
-    lmat[2:(cluster_number+1),4]<-((cluster_number+num_of_data)+2): (((cluster_number+num_of_data)+1)+cluster_number)
-    lmat[2:(cluster_number+1),5]<-((cluster_number+num_of_data)+2): (((cluster_number+num_of_data)+1)+cluster_number)
-    lmat[1,3]<-(((cluster_number+num_of_data)+1)+cluster_number)+1
+    lmat[2:(cluster_number+1),3]<-((cluster_number+2*num_of_data)+2): (((cluster_number+2*num_of_data)+1)+cluster_number)
+    lmat[2:(cluster_number+1),4]<-((cluster_number+2*num_of_data)+2): (((cluster_number+2*num_of_data)+1)+cluster_number)
+    lmat[2:(cluster_number+1),5]<-((cluster_number+2*num_of_data)+2): (((cluster_number+2*num_of_data)+1)+cluster_number)
+    lmat[1,3]<-(((cluster_number+2*num_of_data)+1)+cluster_number)+1
     lwid <- c(0.5, 4,2)
-    lhei <- c(1,rep(1,times=cluster_number),rep(0.25,times=num_of_data))
+    lhei <- c(1,rep(1,times=cluster_number),rep(0.25,times=num_of_data),rep(0.5,times=num_of_data))
 
 
   }
@@ -158,15 +158,15 @@ new_nchheatmap<-function(ordert_genes,col="RdBu",labRow = NULL,cexRoww = NULL, c
       return(c(0,i,0,0,0,0))
     }))
     num_of_data<-ncol(samples_data)
-    lmat<-rbind(lmat,do.call(rbind,lapply((cluster_number+2):((cluster_number+1)+num_of_data), function(i){
+    lmat<-rbind(lmat,do.call(rbind,lapply((cluster_number+2):((cluster_number+1)+2*num_of_data), function(i){
       return(c(0,i,0,0,0,0))
     })))
-    lmat[2:(cluster_number+1),3]<-((cluster_number+num_of_data)+2): (((cluster_number+num_of_data)+1)+cluster_number)
-    lmat[2:(cluster_number+1),4]<-((cluster_number+num_of_data)+2): (((cluster_number+num_of_data)+1)+cluster_number)
-    lmat[2:(cluster_number+1),5]<-((cluster_number+num_of_data)+2): (((cluster_number+num_of_data)+1)+cluster_number)
-    lmat[1,3]<-(((cluster_number+num_of_data)+1)+cluster_number)+1
+    lmat[2:(cluster_number+1),3]<-((cluster_number+2*num_of_data)+2): (((cluster_number+2*num_of_data)+1)+cluster_number)
+    lmat[2:(cluster_number+1),4]<-((cluster_number+2*num_of_data)+2): (((cluster_number+2*num_of_data)+1)+cluster_number)
+    lmat[2:(cluster_number+1),5]<-((cluster_number+2*num_of_data)+2): (((cluster_number+2*num_of_data)+1)+cluster_number)
+    lmat[1,3]<-(((cluster_number+2*num_of_data)+1)+cluster_number)+1
     lwid <- c(0.5, 4,2)
-    lhei <- c(1,rep(1,times=cluster_number),rep(0.25,times=num_of_data))
+    lhei <- c(1,rep(1,times=cluster_number),rep(0.25,times=num_of_data),rep(0.5,times=num_of_data))
 
 
   }
@@ -242,29 +242,29 @@ new_nchheatmap<-function(ordert_genes,col="RdBu",labRow = NULL,cexRoww = NULL, c
     }))
     #add for sample data
     num_of_data<-ncol(samples_data)
-    lmat<-rbind(lmat,do.call(rbind,lapply((cluster_number+2):((cluster_number+1)+num_of_data), function(i){
+    lmat<-rbind(lmat,do.call(rbind,lapply((cluster_number+2):((cluster_number+1)+2*num_of_data), function(i){
       return(c(0,i,0,0,0,0,0))
     })))
     
     
     
     ##Genes
-    lmat[2:(cluster_number+1),3]<-((cluster_number+num_of_data)+2): (((cluster_number+num_of_data)+1)+cluster_number)
+    lmat[2:(cluster_number+1),3]<-((cluster_number+2*num_of_data)+2): (((cluster_number+2*num_of_data)+1)+cluster_number)
     ##GSE
-    lmat[2:(cluster_number+1),4]<-(((cluster_number+num_of_data)+2)+cluster_number): (((cluster_number+num_of_data)+1)+cluster_number*2)
-    lmat[2:(cluster_number+1),5]<-(((cluster_number+num_of_data)+2)+cluster_number): (((cluster_number+num_of_data)+1)+cluster_number*2)
-    lmat[2:(cluster_number+1),6]<-(((cluster_number+num_of_data)+2)+cluster_number): (((cluster_number+num_of_data)+1)+cluster_number*2)
-    lmat[1,3]<-(((cluster_number+num_of_data)+2)+cluster_number*2)
+    lmat[2:(cluster_number+1),4]<-(((cluster_number+2*num_of_data)+2)+cluster_number): (((cluster_number+2*num_of_data)+1)+cluster_number*2)
+    lmat[2:(cluster_number+1),5]<-(((cluster_number+2*num_of_data)+2)+cluster_number): (((cluster_number+2*num_of_data)+1)+cluster_number*2)
+    lmat[2:(cluster_number+1),6]<-(((cluster_number+2*num_of_data)+2)+cluster_number): (((cluster_number+2*num_of_data)+1)+cluster_number*2)
+    lmat[1,3]<-(((cluster_number+2*num_of_data)+2)+cluster_number*2)
     
     #add legende for sample data
-    #start_nr=(((cluster_number+num_of_data)+2)+cluster_number*2)
-    #for(i in 1:num_of_data){
+    #start_nr=(((cluster_number+2*num_of_data)+2)+cluster_number*2)
+    #for(i in 1:2*num_of_data){
      # lmat[i+(1+cluster_number),3]=start_nr+i
     #}
     
     
     lwid <- c(0.5, 4,2)
-    lhei <- c(1,rep(1,times=cluster_number),rep(0.25,times=num_of_data))
+    lhei <- c(1,rep(1,times=cluster_number),rep(0.25,times=num_of_data),rep(0.5,times=num_of_data))
 
   }
 
@@ -278,18 +278,18 @@ new_nchheatmap<-function(ordert_genes,col="RdBu",labRow = NULL,cexRoww = NULL, c
       return(c(0,i,0,0,0,0,0))
     }))
     num_of_data<-ncol(samples_data)
-    lmat<-rbind(lmat,do.call(rbind,lapply((cluster_number+2):((cluster_number+1)+num_of_data), function(i){
+    lmat<-rbind(lmat,do.call(rbind,lapply((cluster_number+2):((cluster_number+1)+2*num_of_data), function(i){
       return(c(0,i,0,0,0,0,0))
     })))
     ##Genes
-    lmat[2:(cluster_number+1),3]<-((cluster_number+num_of_data)+2): (((cluster_number+num_of_data)+1)+cluster_number)
+    lmat[2:(cluster_number+1),3]<-((cluster_number+2*num_of_data)+2): (((cluster_number+2*num_of_data)+1)+cluster_number)
     ## GSE
-    lmat[2:(cluster_number+1),4]<-(((cluster_number+num_of_data)+2)+cluster_number): (((cluster_number+num_of_data)+1)+cluster_number*2)
-    lmat[2:(cluster_number+1),5]<-(((cluster_number+num_of_data)+2)+cluster_number): (((cluster_number+num_of_data)+1)+cluster_number*2)
-    lmat[2:(cluster_number+1),6]<-(((cluster_number+num_of_data)+2)+cluster_number): (((cluster_number+num_of_data)+1)+cluster_number*2)
+    lmat[2:(cluster_number+1),4]<-(((cluster_number+2*num_of_data)+2)+cluster_number): (((cluster_number+2*num_of_data)+1)+cluster_number*2)
+    lmat[2:(cluster_number+1),5]<-(((cluster_number+2*num_of_data)+2)+cluster_number): (((cluster_number+2*num_of_data)+1)+cluster_number*2)
+    lmat[2:(cluster_number+1),6]<-(((cluster_number+2*num_of_data)+2)+cluster_number): (((cluster_number+2*num_of_data)+1)+cluster_number*2)
 
     lwid <- c(0.5, 4,2)
-    lhei <- c(1,rep(1,times=cluster_number),rep(0.25,times=num_of_data))
+    lhei <- c(1,rep(1,times=cluster_number),rep(0.25,times=num_of_data),rep(0.5,times=num_of_data))
 
   }
 
@@ -435,6 +435,7 @@ new_nchheatmap<-function(ordert_genes,col="RdBu",labRow = NULL,cexRoww = NULL, c
       plot_h=5
       diff_at<-unique(samples_data[,j])
       num_of_at<-length(diff_at)
+      if(j==1)  graphics::text(x=nc/2,y=7,"Clinical Data",cex=1,adj = c(0,0))
       graphics::text(x=0.5,y=7,colnames(samples_data)[j],cex=0.7,adj = c(0,0))
       #pall<-palette(rainbow(num_of_at,start=((j-1)/ncol(samples_data)),end=(j/ncol(samples_data))))
       # pallb<-rainbow(num_of_at, start=rgb2hsv(col2rgb('brown'))[1],
@@ -460,7 +461,32 @@ new_nchheatmap<-function(ordert_genes,col="RdBu",labRow = NULL,cexRoww = NULL, c
   }
 
 
-
+  
+  ######################################### clinical data legende
+  if(!is.null(samples_data)){
+    for(j in 1:ncol(samples_data)){
+      graphics::par(mar = c(0.5, 3,1,0))
+      graphics::plot(c(0,20), c(1,10), bty="n",type="n",xaxs="i",xlab="",ylab="",axes=FALSE)#
+      if(j==1)  graphics::text(x=10,y=8,"color legend for the clinical data",cex=1,adj = c(0,0))
+      
+      plot_w=nc
+      plot_h=5
+      diff_at<-unique(samples_data[,j])
+      num_of_at<-length(diff_at)
+      graphics::text(x=0.5,y=7,colnames(samples_data)[j],cex=0.7,adj = c(0,0))
+      pallb<-RColorBrewer::brewer.pal(n =max(num_of_at,3) ,name = "Paired")
+      for(iii in 1:length(pallb)){
+        ff=iii/2
+        xx=c(3.5, 4,4,3.5)
+        yy=c((8-ff),(8-ff),(8-ff+0.5),(8-ff+0.5))
+        graphics::polygon(xx,yy, col = pallb[iii], border = NA )
+        graphics::text(x=4.5,y=8-ff,diff_at[iii],cex=0.7,adj = c(0,0))
+        
+      }
+      
+    }
+  }
+  
 
   ##################add genes on the side
   if( print_genes & (genes_to_print>=1) ){
@@ -529,6 +555,10 @@ new_nchheatmap<-function(ordert_genes,col="RdBu",labRow = NULL,cexRoww = NULL, c
     }
   }
 
+  
+
+  
+  
   ################plot mean Sill. width
   if(plot_mean_sil){
     diff_clusters<-length(sil_mean)
@@ -542,33 +572,7 @@ new_nchheatmap<-function(ordert_genes,col="RdBu",labRow = NULL,cexRoww = NULL, c
 
   }
   
-  
-  ######################################### clinical data legende
-  if(!is.null(samples_data)){
-    for(j in 1:ncol(samples_data)){
-      graphics::par(mar = c(0.5, 3,0,0))
-      graphics::plot(c(0,20), c(1,10), bty="n",type="n",xaxs="i",xlab="",ylab="",axes=FALSE)#
-      
-      plot_w=nc
-      plot_h=5
-      diff_at<-unique(samples_data[,j])
-      num_of_at<-length(diff_at)
-      graphics::text(x=0.5,y=7,colnames(samples_data)[j],cex=0.7,adj = c(0,0))
-      pallb<-RColorBrewer::brewer.pal(n =max(num_of_at,3) ,name = "Paired")
-      for(iii in 1:length(pallb)){
-        ff=iii/2
-        xx=c(3.5, 4,4,3.5)
-        yy=c((8-ff),(8-ff),(8-ff+0.25),(8-ff+0.25))
-        graphics::polygon(xx,yy, col = pallb[iii], border = NA )
-        graphics::text(x=4.5,y=8-ff,diff_at[iii],cex=0.7,adj = c(0,0))
-        
-      }
-      
-    }
-  }
-  
-  
-  
+
   
   
   

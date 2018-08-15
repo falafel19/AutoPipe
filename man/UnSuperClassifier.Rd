@@ -4,7 +4,7 @@
 \alias{UnSuperClassifier}
 \title{Unsupervised Clustering}
 \usage{
-UnSuperClassifier(data,clinical_data=NULL,TOP_Cluster=150,thr=2)
+UnSuperClassifier(data,clinical_data=NULL,thr=2,TOP_Cluster=150)
 }
 \arguments{
 \item{data}{the data for the clustering. Data should be in the following format: samples in columns and
