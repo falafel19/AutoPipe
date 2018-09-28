@@ -6,10 +6,13 @@
 #' @usage TopPAM(me, max_clusters=15,TOP=1000)
 #' @param me a matrix with genes in rows and samples in columns
 #' @param max_clusters max. number of clusters to check
-#' @param TOP the number of genes to take
-#'
+#' @param TOP the number of genes to take.
+#' @param Gap_stat A logical value that indicates wether or not to calculate the Silhouette width and Gap statistic.
+#' @param B integer, number of Monte Carlo (“bootstrap”) samples.
+#' @details we use the clusGap algorithm from the package cluster to calculate the Gap statistic.
 #' @return a list of 1. A matrix with the top genes
-#' 2. A list of means of the Silhouette width for each number of clusters. 3. The optimal number of clusters
+#' 2. A list of means of the Silhouette width for each number of clusters. 3. The optimal number of clusters. 4. gap_st the gap statistic of the clustering
+#' 5. best number of clusters according to the gap statistic.
 #'
 #' @examples
 #' ##load the org.Hs.eg Library
@@ -21,7 +24,7 @@
 #' me_TOP=res[[1]]
 #' number_of_k=res[[3]]
 #'
-TopPAM=function(me, max_clusters=15,TOP=1000){
+TopPAM=function(me, max_clusters=15,TOP=1000,B=100){
   #Top 1000
   dim(me)
   sd=as.data.frame(apply(me,1, function(x){sd(x)}))
@@ -37,9 +40,14 @@ TopPAM=function(me, max_clusters=15,TOP=1000){
     mean_s=mean(as.numeric(si[,3]))
     return(mean_s)
   })))
-  graphics::plot(sil_mean, type = "l", xaxt = "n", bty="n")
-  graphics::axis(1, 1:14, seq(2,15,by=1))
-  graphics::points(sil_mean, col="red", pch=20)
-  graphics::abline(v=which.max(sil_mean), lty=3)
-  return(list(me_TOP,sil_mean,which.max(sil_mean)+1))
+  
+  
+  
+  
+  gap_st<-clusGap(t(me_TOP),FUNcluster = pam,K.max = 20,B=100)
+  plot(gap_st,main = "Gap Statistics", bty="n",xaxt="n")
+  axis(side = 1,at = c(1:19),labels= c(2:20))
+  best_nc_gp<-maxSE(gap_st$Tab[,3],gap_st$Tab[,4],method = "Tibs2001SEmax",.25)
+  
+  return(list(me_TOP,sil_mean,which.max(sil_mean)+1,gap_st,best_nc_gp))
 }

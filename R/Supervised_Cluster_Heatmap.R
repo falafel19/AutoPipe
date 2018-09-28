@@ -40,8 +40,8 @@
 #' the paramater can one of the values: "c1","c2","c3",c4","c5","c6","c7","h". See the
 #' broad institue GSE \href{http://software.broadinstitute.org/gsea/index.jsp}{GSE webpage} for further information in each dataset.
 #' @param plot_mean_sil A logical value. if TRUE the function plots the mean of the
-#' Silhouette width for each cluster number.
-#' @param sil_mean A vector with the mean Silhouette widths forfor the number of clusters. The first
+#' Silhouette width for each cluster number or gap statistic.
+#' @param stats_clust A vector with the mean Silhouette widths or gap statistic for the number of clusters. The first
 #' value should be for 2 Clusters. 2nd is for 3 clusters and so on.
 #' @param threshold the threshhold for the pam analysis default is 2.
 #' @param TOP_Cluster a numeric variable for the number of genes to include in the clusters. Default is 150.
@@ -65,13 +65,13 @@
 #' me_x=File_genes[[1]]
 #' o_g<-Supervised_Cluster_Heatmap(groups_men = groups_men, gene_matrix=me_x,
 #'     method="PAMR",show_sil=TRUE,print_genes=TRUE,
-#'     TOP = 1000,GSE=TRUE,plot_mean_sil=TRUE,sil_mean=res[[2]])
+#'     TOP = 1000,GSE=TRUE,plot_mean_sil=TRUE,stats_clust=res[[2]])
 #'
 #' @export Supervised_Cluster_Heatmap
 Supervised_Cluster_Heatmap=function(groups_men, gene_matrix, method="PAMR",TOP=1000,TOP_Cluster=150,
                                      show_sil=FALSE,show_clin=FALSE,genes_to_print=5,
                                      print_genes=FALSE,samples_data=NULL,colors="RdBu",
-                                     GSE=FALSE,topPaths=5,db="c2",plot_mean_sil=FALSE,sil_mean =NULL,threshold=2){
+                                     GSE=FALSE,topPaths=5,db="c2",plot_mean_sil=FALSE,stats_clust =NULL,threshold=2){
   cluster_files=supVisGenes(groups_men,gene_matrix=gene_matrix,method=method,TOP = TOP,threshold = threshold,TOP_Cluster=TOP_Cluster)
   ordert_genes<-cluster_files[[1]]
   genes_print_list<-cluster_files[[2]]
@@ -79,6 +79,6 @@ Supervised_Cluster_Heatmap=function(groups_men, gene_matrix, method="PAMR",TOP=1
 
   new_nchheatmap(ordert_genes, sil_width =sil_w
                  ,samples_data = samples_data,print_genes = print_genes,list_of_genes = genes_print_list
-                 ,plot_mean_sil=plot_mean_sil,sil_mean =sil_mean,
+                 ,plot_mean_sil=plot_mean_sil,sil_mean =stats_clust,
                  genes_to_print=genes_to_print,col=colors,GSE=GSE,db=db,topPaths=topPaths)
 }
