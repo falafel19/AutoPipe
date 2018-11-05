@@ -25,7 +25,7 @@
 #' colnames(me_x)
 #' o_g<-Supervised_Cluster_Heatmap(groups_men = groups_men, gene_matrix=me_x,
 #'                                method="PAMR",show_sil=TRUE,print_genes=TRUE,threshold = 1,
-#'                                TOP = 1000,GSE=TRUE,plot_mean_sil=FALSE,sil_mean=res[[2]],
+#'                                TOP = 1000,GSE=TRUE,plot_mean_sil=FALSE,stats_clust=res[[2]],
 #'                                samples_data = as.data.frame(groups_men[,1,drop=FALSE]))
 
 top_supervised<-function(me,TOP=1000,cluster_which,TRw=-1){

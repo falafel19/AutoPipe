@@ -1,18 +1,16 @@
 Package: AutoPipe
 Type: Package
-Title: AUtomated TranscriptOme Classifier Pipeline (AutoPipe): An R-Package for Comprehensive Transcriptome Analysis
+Title: Automated Transcriptome Classifier Pipeline (AutoPipe): An R-Package for Comprehensive Transcriptome Analysis
 Version: 0.1.0
 Author: Karam Daka & Dieter Henrik Heiland
 Maintainer: The package maintainer <k.dacca@gmail.com>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
+Description: The AUTOPipe computational pipeline has to main functions, which includes either an unsupervised fully-automated pipeline for transcriptome analysis or a supervised option to identify characteristic genes from predefined subclasses,
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
 Imports:
   cluster 
   ,pamr 
-  ,parallel 
   ,siggenes
   ,annotate
   ,fgsea
@@ -22,4 +20,4 @@ Imports:
   ,Rtsne
   ,clusterProfiler
 Depends: R (>= 2.10.0)
-RoxygenNote: 6.0.1
+RoxygenNote: 6.1.0

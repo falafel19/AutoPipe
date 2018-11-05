@@ -4,7 +4,7 @@
 \alias{AutoPipe_tSNE}
 \title{Implemented t-distributed stochastic neighbor embedding}
 \usage{
-AutoPipe_tSNE(me,perplexity=30,max_iter=500)
+AutoPipe_tSNE(me,perplexity=30,max_iter=500,groups_men)
 }
 \arguments{
 \item{me}{The path of the expression table}
@@ -12,6 +12,9 @@ AutoPipe_tSNE(me,perplexity=30,max_iter=500)
 \item{perplexity}{numeric; Perplexity parameter}
 
 \item{max_iter}{integer; Number of iterations (default: 1000)}
+
+\item{groups_men}{the data frame with the group clustering that the function Groups_Sup or top_supervised (2. place on the list) returns with
+the data about each sample and its coressponding cluster.}
 }
 \description{
 This function is used to upload a table into R for further use in the AutoPipe

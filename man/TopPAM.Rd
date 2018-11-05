@@ -4,21 +4,27 @@
 \alias{TopPAM}
 \title{Compute Top genes}
 \usage{
-TopPAM(me, max_clusters=15,TOP=1000)
+TopPAM(me, max_clusters=15,TOP=1000,B=100)
 }
 \arguments{
 \item{me}{a matrix with genes in rows and samples in columns}
 
 \item{max_clusters}{max. number of clusters to check}
 
-\item{TOP}{the number of genes to take}
+\item{TOP}{the number of genes to take.}
+
+\item{B}{integer, number of Monte Carlo (“bootstrap”) samples.}
 }
 \value{
 a list of 1. A matrix with the top genes
-2. A list of means of the Silhouette width for each number of clusters. 3. The optimal number of clusters
+2. A list of means of the Silhouette width for each number of clusters. 3. The optimal number of clusters. 4. gap_st the gap statistic of the clustering
+5. best number of clusters according to the gap statistic.
 }
 \description{
 This function computes the n=TOP genes and the the best number of clusters
+}
+\details{
+we use the clusGap algorithm from the package cluster to calculate the Gap statistic.
 }
 \examples{
 ##load the org.Hs.eg Library
@@ -29,5 +35,4 @@ me_x=rna
 res<-AutoPipe::TopPAM(me_x,max_clusters = 8, TOP=1000)
 me_TOP=res[[1]]
 number_of_k=res[[3]]
-
 }

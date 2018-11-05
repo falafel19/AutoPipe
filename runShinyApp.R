@@ -1,4 +1,5 @@
 #' @export runShinyApp
+#' @import shiny
 runShinyApp=function() {
   appDir <- system.file("shiny-examples", "myapp", package = "AutoPipe")
   if (appDir == "") {

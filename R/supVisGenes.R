@@ -1,3 +1,4 @@
+#' @import  graphics
 supVisGenes=function(groups_men, gene_matrix, method,TOP=1000,p_val=0.05,OR=3
                      ,threshold=2, TOP_Cluster=150){
   me_x=gene_matrix

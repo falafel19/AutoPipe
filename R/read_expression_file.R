@@ -3,7 +3,7 @@
 #' This function is used to upload a table into R for further use in the AutoPipe
 #'
 #'
-#' @usage read_expression_file(file, format="csv", sep";",gene_name="SYMBOL",Trans=F)
+#' @usage read_expression_file(file, format = "csv", sep=";",gene_name="SYMBOL", Trans=FALSE)
 #' 
 #' @param file The path of the expression table
 #' @param format The format of the table "csv" or "txt"
@@ -14,7 +14,7 @@
 #'
 #' @export read_expression_file
 
-read_expression_file=function(file, format = "csv", sep=";",gene_name="SYMBOL", Trans=F){
+read_expression_file=function(file, format = "csv", sep=";",gene_name="SYMBOL", Trans=FALSE){
   
   print(paste("----- Start Import --------"))
   data_out=if(format=="csv"){

@@ -4,7 +4,7 @@
 \alias{read_expression_file}
 \title{Input Expression File}
 \usage{
-read_expression_file(file, format="csv", sep";",gene_name="SYMBOL",Trans=F)
+read_expression_file(file, format = "csv", sep=";",gene_name="SYMBOL", Trans=FALSE)
 }
 \arguments{
 \item{file}{The path of the expression table}

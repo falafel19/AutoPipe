@@ -3,11 +3,10 @@
 #' This function computes the n=TOP genes and the the best number of clusters
 #'
 #' @export TopPAM
-#' @usage TopPAM(me, max_clusters=15,TOP=1000)
+#' @usage TopPAM(me, max_clusters=15,TOP=1000,B=100)
 #' @param me a matrix with genes in rows and samples in columns
 #' @param max_clusters max. number of clusters to check
 #' @param TOP the number of genes to take.
-#' @param Gap_stat A logical value that indicates wether or not to calculate the Silhouette width and Gap statistic.
 #' @param B integer, number of Monte Carlo (“bootstrap”) samples.
 #' @details we use the clusGap algorithm from the package cluster to calculate the Gap statistic.
 #' @return a list of 1. A matrix with the top genes
@@ -23,7 +22,8 @@
 #' res<-AutoPipe::TopPAM(me_x,max_clusters = 8, TOP=1000)
 #' me_TOP=res[[1]]
 #' number_of_k=res[[3]]
-#'
+#' @import  graphics
+#' @import  cluster
 TopPAM=function(me, max_clusters=15,TOP=1000,B=100){
   #Top 1000
   dim(me)
@@ -44,10 +44,10 @@ TopPAM=function(me, max_clusters=15,TOP=1000,B=100){
   
   
   
-  gap_st<-clusGap(t(me_TOP),FUNcluster = pam,K.max = 20,B=100)
-  plot(gap_st,main = "Gap Statistics", bty="n",xaxt="n")
-  axis(side = 1,at = c(1:19),labels= c(2:20))
-  best_nc_gp<-maxSE(gap_st$Tab[,3],gap_st$Tab[,4],method = "Tibs2001SEmax",.25)
+  gap_st<-cluster::clusGap(t(me_TOP),FUNcluster = pam,K.max = 20,B=100)
+  graphics::plot(gap_st,main = "Gap Statistics", bty="n",xaxt="n")
+  graphics::axis(side = 1,at = c(1:19),labels= c(2:20))
+  best_nc_gp<-cluster::maxSE(gap_st$Tab[,3],gap_st$Tab[,4],method = "Tibs2001SEmax",.25)
   
   return(list(me_TOP,sil_mean,which.max(sil_mean)+1,gap_st,best_nc_gp))
 }

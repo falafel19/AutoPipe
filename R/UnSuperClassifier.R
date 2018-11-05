@@ -16,7 +16,7 @@
 #'  as rownames and the clinical triats as columns.
 #'  each trait must be a numeric variable.
 #'  @return the function is an autated Pipeline for clustering it plot cluster analysis for the geneset
-
+#' @import  graphics
 UnSuperClassifier<-function(data,clinical_data=NULL,thr=2,TOP_Cluster=150){
   res<-AutoPipe::TopPAM(data,max_clusters = 8, TOP=1000)
   me_TOP=res[[1]]
@@ -28,12 +28,12 @@ UnSuperClassifier<-function(data,clinical_data=NULL,thr=2,TOP_Cluster=150){
   if(is.null(clinical_data)){
     o_g<-Supervised_Cluster_Heatmap(groups_men = groups_men, gene_matrix=File_genes[[1]],TOP_Cluster=TOP_Cluster,
                                     method="PAMR",show_sil=TRUE,threshold = thr
-                                    ,print_genes=T,TOP = 1000,GSE=T,plot_mean_sil=T,sil_mean=res[[2]])
+                                    ,print_genes=T,TOP = 1000,GSE=T,plot_mean_sil=T,stats_clust=res[[2]])
   }
   else{
     o_g<-Supervised_Cluster_Heatmap(groups_men = groups_men, gene_matrix=File_genes[[1]],threshold=thr,TOP_Cluster=TOP_Cluster,
                                     method="PAMR",show_clin =TRUE,show_sil=TRUE,samples_data = clinical_data
-                                    ,print_genes=T,TOP = 1000,GSE=T,plot_mean_sil=T,sil_mean=res[[2]])
+                                    ,print_genes=T,TOP = 1000,GSE=T,plot_mean_sil=T,stats_clust=res[[2]])
 
   }
 }

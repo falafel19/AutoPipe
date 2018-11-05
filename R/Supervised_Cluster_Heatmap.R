@@ -12,7 +12,7 @@
 #' @usage Supervised_Cluster_Heatmap(groups_men, gene_matrix, method="PAMR",TOP=1000,TOP_Cluster=150,
 #' show_sil=FALSE,show_clin=FALSE,genes_to_print=5,
 #' print_genes=FALSE,samples_data=NULL,colors="RdBu",
-#' GSE=FALSE,topPaths=5,db="c2",plot_mean_sil=FALSE,sil_mean =NULL,threshold=2)
+#' GSE=FALSE,topPaths=5,db="c2",plot_mean_sil=FALSE,stats_clust =NULL,threshold=2)
 #' @param groups_men the data frame with the group clustering that the function Groups_Sup or top_supervised (2. place on the list) returns with
 #' the data about each sample and its coressponding cluster.
 #' @param gene_matrix the matrix of n selected genes that the function Groups_Sup returns
@@ -66,7 +66,7 @@
 #' o_g<-Supervised_Cluster_Heatmap(groups_men = groups_men, gene_matrix=me_x,
 #'     method="PAMR",show_sil=TRUE,print_genes=TRUE,
 #'     TOP = 1000,GSE=TRUE,plot_mean_sil=TRUE,stats_clust=res[[2]])
-#'
+#' @import  graphics
 #' @export Supervised_Cluster_Heatmap
 Supervised_Cluster_Heatmap=function(groups_men, gene_matrix, method="PAMR",TOP=1000,TOP_Cluster=150,
                                      show_sil=FALSE,show_clin=FALSE,genes_to_print=5,

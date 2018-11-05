@@ -7,7 +7,7 @@
 Supervised_Cluster_Heatmap(groups_men, gene_matrix, method="PAMR",TOP=1000,TOP_Cluster=150,
 show_sil=FALSE,show_clin=FALSE,genes_to_print=5,
 print_genes=FALSE,samples_data=NULL,colors="RdBu",
-GSE=FALSE,topPaths=5,db="c2",plot_mean_sil=FALSE,sil_mean =NULL,threshold=2)
+GSE=FALSE,topPaths=5,db="c2",plot_mean_sil=FALSE,stats_clust =NULL,threshold=2)
 }
 \arguments{
 \item{groups_men}{the data frame with the group clustering that the function Groups_Sup or top_supervised (2. place on the list) returns with
@@ -52,9 +52,9 @@ the paramater can one of the values: "c1","c2","c3",c4","c5","c6","c7","h". See 
 broad institue GSE \href{http://software.broadinstitute.org/gsea/index.jsp}{GSE webpage} for further information in each dataset.}
 
 \item{plot_mean_sil}{A logical value. if TRUE the function plots the mean of the
-Silhouette width for each cluster number.}
+Silhouette width for each cluster number or gap statistic.}
 
-\item{sil_mean}{A vector with the mean Silhouette widths forfor the number of clusters. The first
+\item{stats_clust}{A vector with the mean Silhouette widths or gap statistic for the number of clusters. The first
 value should be for 2 Clusters. 2nd is for 3 clusters and so on.}
 
 \item{threshold}{the threshhold for the pam analysis default is 2.}
@@ -88,6 +88,5 @@ groups_men=File_genes[[2]]
 me_x=File_genes[[1]]
 o_g<-Supervised_Cluster_Heatmap(groups_men = groups_men, gene_matrix=me_x,
     method="PAMR",show_sil=TRUE,print_genes=TRUE,
-    TOP = 1000,GSE=TRUE,plot_mean_sil=TRUE,sil_mean=res[[2]])
-
+    TOP = 1000,GSE=TRUE,plot_mean_sil=TRUE,stats_clust=res[[2]])
 }
