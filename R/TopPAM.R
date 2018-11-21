@@ -44,7 +44,7 @@ TopPAM=function(me, max_clusters=15,TOP=1000,B=100){
   
   
   
-  gap_st<-cluster::clusGap(t(me_TOP),FUNcluster = pam,K.max = 20,B=100)
+  gap_st<-cluster::clusGap(t(me_TOP),FUNcluster = cluster::pam,K.max = max_clusters,B=100)
   graphics::plot(gap_st,main = "Gap Statistics", bty="n",xaxt="n")
   graphics::axis(side = 1,at = c(1:19),labels= c(2:20))
   best_nc_gp<-cluster::maxSE(gap_st$Tab[,3],gap_st$Tab[,4],method = "Tibs2001SEmax",.25)
