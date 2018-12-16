@@ -84,11 +84,6 @@ Supervised_Cluster_Heatmap=function(groups_men, gene_matrix, method="PAMR",TOP=1
                  ,samples_data = samples_data,print_genes = print_genes,list_of_genes = genes_print_list
                  ,plot_mean_sil=plot_mean_sil,sil_mean =stats_clust,
                  genes_to_print=genes_to_print,col=colors,GSE=GSE,db=db,topPaths=topPaths)
-<<<<<<< HEAD
   return(cluster_files)
-=======
 
-return(genes_print_list)
-
->>>>>>> c027c985591f6f97bdbcf5d422efb14a36663296
 }
