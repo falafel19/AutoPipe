@@ -10,7 +10,7 @@ top_supervised(me,TOP=1000,cluster_which,TRw=-1)
 \item{me}{the matrix of the gene exporessions, the olums should be the samples  and the colnames the sample names
 the rownames should be the genes . at best the ENTEREZID}
 
-\item{TOP}{the top genes to choose, default is 1000.}
+\item{TOP}{the top genes to choose, default is 100.}
 
 \item{cluster_which}{a dataframe with the supervised clustering arrangment of the samples. the dataframe should have the
 sample names in the first column and the clustering in the secound column.}
@@ -25,12 +25,13 @@ when perfoming a supervised clustering the user should run this function in orde
 }
 \examples{
 
+\dontrun{
 library(org.Hs.eg.db)
 data(rna)
 cluster_which<-cbind(colnames(rna),c(rep(1,times=24),rep(2,times=24)))
 me_x=rna
 ## calculate best number of clusters and
-res<-top_supervised(me_x,TOP = 1000,cluster_which)
+res<-top_supervised(me_x,TOP = 100,cluster_which)
 me_TOP=res[[1]]
 number_of_k=2
 groups_men=res[[2]]
@@ -38,6 +39,7 @@ me_x=me_TOP
 colnames(me_x)
 o_g<-Supervised_Cluster_Heatmap(groups_men = groups_men, gene_matrix=me_x,
                                method="PAMR",show_sil=TRUE,print_genes=TRUE,threshold = 1,
-                               TOP = 1000,GSE=TRUE,plot_mean_sil=FALSE,stats_clust=res[[2]],
+                               TOP = 100,GSE=TRUE,plot_mean_sil=FALSE,stats_clust=res[[2]],
                                samples_data = as.data.frame(groups_men[,1,drop=FALSE]))
+                               }
 }

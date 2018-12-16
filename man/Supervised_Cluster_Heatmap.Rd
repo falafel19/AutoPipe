@@ -4,7 +4,8 @@
 \alias{Supervised_Cluster_Heatmap}
 \title{Produce a Heatmap using a Supervised clustering Algorithm}
 \usage{
-Supervised_Cluster_Heatmap(groups_men, gene_matrix, method="PAMR",TOP=1000,TOP_Cluster=150,
+Supervised_Cluster_Heatmap(groups_men, gene_matrix,
+method="PAMR",TOP=1000,TOP_Cluster=150,
 show_sil=FALSE,show_clin=FALSE,genes_to_print=5,
 print_genes=FALSE,samples_data=NULL,colors="RdBu",
 GSE=FALSE,topPaths=5,db="c2",plot_mean_sil=FALSE,stats_clust =NULL,threshold=2)
@@ -74,13 +75,14 @@ sample data should be a data.frame with the sample names
   each trait must be a numeric variable.
 }
 \examples{
+\dontrun{
 ##load the org.Hs.eg Library
 library(org.Hs.eg.db)
 ## load data
 data(rna)
 me_x=rna
 ## calculate best number of clusters and
-res<-AutoPipe::TopPAM(me_x,max_clusters = 8, TOP=1000)
+res<-AutoPipe::TopPAM(me_x,max_clusters = 8, TOP=100)
 me_TOP=res[[1]]
 number_of_k=res[[3]]
 File_genes=Groups_Sup(me_TOP, me=me_x, number_of_k,TRw=-1)
@@ -89,4 +91,5 @@ me_x=File_genes[[1]]
 o_g<-Supervised_Cluster_Heatmap(groups_men = groups_men, gene_matrix=me_x,
     method="PAMR",show_sil=TRUE,print_genes=TRUE,
     TOP = 1000,GSE=TRUE,plot_mean_sil=TRUE,stats_clust=res[[2]])
+    }
 }

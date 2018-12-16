@@ -14,14 +14,16 @@
 #' 5. best number of clusters according to the gap statistic.
 #'
 #' @examples
+#' \dontrun{
 #' ##load the org.Hs.eg Library
 #' library(org.Hs.eg.db)
 #' #' ## load data
 #' data(rna)
 #' me_x=rna
-#' res<-AutoPipe::TopPAM(me_x,max_clusters = 8, TOP=1000)
+#' res<-AutoPipe::TopPAM(me_x,max_clusters = 8, TOP=100)
 #' me_TOP=res[[1]]
 #' number_of_k=res[[3]]
+#' }
 #' @import  graphics
 #' @import  cluster
 TopPAM=function(me, max_clusters=15,TOP=1000,B=100){

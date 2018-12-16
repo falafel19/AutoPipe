@@ -11,8 +11,10 @@
 #'  the same return value as the COnsensusClusterPlus
 #' @export cons_clust
 #' @examples
+#' \dontrun{
 #' data(rna)
-#' cons_clust(rna,5,TOPgenes=150)
+#' cons_clust(rna,5,TOPgenes=50)
+#' }
 ########Consensus Clustering
 cons_clust<-function(data,max_clust=5,TOPgenes=150){
   geneset<-data

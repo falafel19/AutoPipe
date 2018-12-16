@@ -5,14 +5,23 @@ pathway_fgsea<-function(db="c1",number_of_k,clusters_data,topPaths=5){
   #load("R/sysdata.rda")
 
 
-  d<-if(db=="c1") c1
-  else  d<-if(db=="c2") c2
-  else  d<-if(db=="c3") c3
-  else  d<-if(db=="c4") c4
-  else  d<-if(db=="c5") c5
-  else  d<-if(db=="c6") c6
-  else  d<-if(db=="c7") c7
-  else  d<-if(db=="h")  h
+  d<-if(db=="c1") msigdbr::msigdbr(species = "Homo sapiens", category = "C1",subcategory = NULL)
+  else  d<-if(db=="c2") msigdbr::msigdbr(species = "Homo sapiens", category = "C2",subcategory = NULL)
+  else  d<-if(db=="c3") msigdbr::msigdbr(species = "Homo sapiens", category = "C3",subcategory = NULL)
+  else  d<-if(db=="c4") msigdbr::msigdbr(species = "Homo sapiens", category = "C4",subcategory = NULL)
+  else  d<-if(db=="c5") msigdbr::msigdbr(species = "Homo sapiens", category = "C5",subcategory = NULL)
+  else  d<-if(db=="c6") msigdbr::msigdbr(species = "Homo sapiens", category = "C6",subcategory = NULL)
+  else  d<-if(db=="c7") msigdbr::msigdbr(species = "Homo sapiens", category = "C7",subcategory = NULL)
+  else  d<-if(db=="h")  msigdbr::msigdbr(species = "Homo sapiens", category = "H",subcategory = NULL)
+####################################### change format to accepted format by fgsea
+  unq<-unique(d$gs_name)
+  i=1
+  ds<-lapply(1:length(unq),FUN = function(i){
+    tt<-as.list(d[d$gs_name==unq[i],"entrez_gene"])
+    tt<-as.character(tt$entrez_gene)
+  })
+  names(ds)<-unq
+  d<-ds
 ####################################### fgsea
 
   top_paths<-lapply(1:number_of_k, function(i){

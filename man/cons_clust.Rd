@@ -22,6 +22,8 @@ this function  calls the ConsensusClusterPlus function with thedaraset and plots
 with the heatmaps of the clustering for each number of clusters from 2 to max_clust
 }
 \examples{
+\dontrun{
 data(rna)
-cons_clust(rna,5,TOPgenes=150)
+cons_clust(rna,5,TOPgenes=50)
+}
 }
