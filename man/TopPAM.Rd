@@ -4,7 +4,7 @@
 \alias{TopPAM}
 \title{Compute Top genes}
 \usage{
-TopPAM(me, max_clusters=15,TOP=1000,B=100)
+TopPAM(me, max_clusters=15,TOP=1000,B=100,clusterboot=FALSE)
 }
 \arguments{
 \item{me}{a matrix with genes in rows and samples in columns}
@@ -33,7 +33,7 @@ library(org.Hs.eg.db)
 #' ## load data
 data(rna)
 me_x=rna
-res<-AutoPipe::TopPAM(me_x,max_clusters = 8, TOP=100)
+res<-AutoPipe::TopPAM(me_x,max_clusters = 8, TOP=100,clusterboot=FALSE)
 me_TOP=res[[1]]
 number_of_k=res[[3]]
 }
